@@ -10,12 +10,12 @@ function StarObj() {
 StarObj.prototype.init = function () {
     this.x = Math.random() * 600 + 100;
     this.y = Math.random() * 300 + 150;
-    this.picNo = 0;
+    this.picNo = Math.floor(Math.random() * 7);
     this.timer = 0;
 };
 StarObj.prototype.update = function () {
     this.timer += deltaTime;
-    if(this.timer > 50){
+    if (this.timer > 50) {
         this.picNo += 1;
         this.picNo %= 7;
         this.timer = 0;
