@@ -11,7 +11,7 @@ function init(){
     h = can.height;
 
     girlPic.src="src/girl.jpg";
-    starPic.src="src/star.jpg";
+    starPic.src="src/star.png";
 
     gameLoop()
 }
