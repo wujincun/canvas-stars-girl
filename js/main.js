@@ -9,6 +9,7 @@ var num = 60;
 var starts = [];
 
 var lastTime, deltaTime;
+var switchy = false;
 function init() {
     can = document.getElementById('canvas');
     ctx = can.getContext('2d');
@@ -17,6 +18,8 @@ function init() {
 
     girlPic.src = "src/girl.jpg";
     starPic.src = "src/star.png";
+
+    document.addEventListener('mousemove', mousemove, false);
 
     for (var i = 0; i < num; i++) {
         var obj = new StarObj();
@@ -46,4 +49,16 @@ function drawGirl() {
     //drawImage(img,x,y，width,height)
     //x轴标正方向向右，y轴坐标正方向向下，（0,0）在canvas左上角
     ctx.drawImage(girlPic, 100, 150, 600, 300)
+}
+function mousemove(e) {
+    if (e.offsetX || e.offsetY) {
+        var px = e.offsetX == undefined ? e.layerX : e.offsetX;
+        var py = e.offsety == undefined ? e.layery : e.offsety;
+        //out switchy=false in switchy=true
+        if (px > 100 && px < 700 && py > 150 && py < 450) {
+            switchy = true
+        }else{
+            switchy = false
+        }
+    }
 }
