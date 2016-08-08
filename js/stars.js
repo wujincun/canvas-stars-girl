@@ -22,11 +22,11 @@ StarObj.prototype.update = function () {
     this.y += this.ySpd * deltaTime * 0.004;
     //this.x超过范围init
     //this.y超过范围init
-    if(this.x<100 ||this.x>700){
+    if (this.x < 100 || this.x > 700) {
         this.init();
         return
     }
-    if(this.y<150 ||this.y>450){
+    if (this.y < 150 || this.y > 450) {
         this.init();
         return
     }
@@ -36,10 +36,17 @@ StarObj.prototype.update = function () {
         this.picNo %= 7;
         this.timer = 0;
     }
-}
+};
 StarObj.prototype.draw = function () {
+    //save()
+    ctx.save();
+    //globalAlpha全局透明度
+    ctx.globalAlpha = life;//[0,1]
+
     //drawImage(img,sx,sy,swidth,sheight,x,y,width,height)
     ctx.drawImage(starPic, this.picNo * 7, 0, 7, 7, this.x, this.y, 7, 7)
+    //restore()
+    ctx.restore();
 };
 function drawStars() {
     for (var i = 0; i < num; i++) {
@@ -48,11 +55,18 @@ function drawStars() {
     }
 }
 function aliveUpdate() {
-    if(switchy){
+    if (switchy) {//in area
         //show stars
-
-    }else{
+        life += 0.03 * deltaTime * 0.05;//0.05调整速度
+        if (life > 1) {
+            life = 1
+        }
+    } else {//out area
         //hide stars
+        life -= 0.03 * deltaTime * 0.05;
+        if (life < 0) {
+            life = 0
+        }
 
     }
     console.log(switchy)

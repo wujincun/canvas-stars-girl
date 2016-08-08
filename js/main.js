@@ -10,6 +10,7 @@ var starts = [];
 
 var lastTime, deltaTime;
 var switchy = false;
+var life = 0;
 function init() {
     can = document.getElementById('canvas');
     ctx = can.getContext('2d');
@@ -52,9 +53,9 @@ function drawGirl() {
     ctx.drawImage(girlPic, 100, 150, 600, 300)
 }
 function mousemove(e) {
-    if (e.offsetX || e.offsetY) {
+    if (e.offsetX || e.layerX) {
         var px = e.offsetX == undefined ? e.layerX : e.offsetX;
-        var py = e.offsety == undefined ? e.layery : e.offsety;
+        var py = e.offsetY == undefined ? e.layerY : e.offsetY;
         //out switchy=false in switchy=true
         if (px > 100 && px < 700 && py > 150 && py < 450) {
             switchy = true
