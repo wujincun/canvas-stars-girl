@@ -47,5 +47,14 @@ function drawStars() {
         starts[i].draw()
     }
 }
+function aliveUpdate() {
+    if(switchy){
+        //show stars
 
+    }else{
+        //hide stars
+
+    }
+    console.log(switchy)
+}
 

@@ -39,6 +39,7 @@ function gameLoop() {
     drawBackground();
     drawGirl();
     drawStars();
+    aliveUpdate()
 }
 
 function drawBackground() {
